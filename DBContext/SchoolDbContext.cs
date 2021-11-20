@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Sqlite;
 
 
 namespace mamun_SchoolApp.Data
@@ -26,12 +27,21 @@ namespace mamun_SchoolApp.Data
         #region Overidden methods
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+      
+
+          
+
             modelBuilder.Entity<classes>().HasData(GetClasses());
             modelBuilder.Entity<countries>().HasData(GetCountries());
             modelBuilder.Entity<students>().HasData(GetStudents());
             base.OnModelCreating(modelBuilder);
         }
         #endregion
+
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder options)
+        //    => options.UseSqlite($"Data Source={DbPath}");
+
 
 
         #region Private methods
