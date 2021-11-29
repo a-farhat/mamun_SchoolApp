@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace mamun_SchoolApp.Data
 {
-    public class Students : BaseEntity
+    public class Students
     {
        
-        //public int id { get; set; }
+        public int id { get; set; }
         public int? class_id { get; set; }
         public int? country_id { get; set; }
-        //public string name { get; set; }
+        public string name { get; set; }
 
         public DateTime date_of_birth { get; set; }
 

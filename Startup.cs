@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using mamun_SchoolApp.IRepository;
+using mamun_SchoolApp.Repository;using Microsoft.EntityFrameworkCore;
 
 namespace mamun_SchoolApp
 {
@@ -28,7 +30,13 @@ namespace mamun_SchoolApp
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<SchoolDbContext>();
+
+            services.AddDbContext<SchoolDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IStudentsRepository, StudentsRepository>();
+            services.AddScoped<ICountriesRepository, CountriesRepository>();
+            services.AddScoped<IClassesRepository, ClassesRepository>();          
+
 
 
         }

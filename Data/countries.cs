@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace mamun_SchoolApp.Data
 {
-    public class Countries : BaseEntity
+    public class Countries 
     {
-        //public int id { get; set; }
-        //public string name { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
 
-        public ICollection<Students> Students { get; set; }
+        //public ICollection<Students> Students { get; set; }
 
     }
 }

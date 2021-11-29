@@ -97,20 +97,6 @@ using mamun_SchoolApp.Data;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 39 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\FetchData.razor"
-       
-    private WeatherForecast[] forecasts;
-
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
-    }
-
-#line default
-#line hidden
-#nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private WeatherForecastService ForecastService { get; set; }
     }
 }
 #pragma warning restore 1591
