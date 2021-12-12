@@ -18,9 +18,9 @@ namespace mamun_SchoolApp.Data
 
 
         #region Public properties
-        public DbSet<Classes> classes { get; set; }
-        public DbSet<Countries> countries { get; set; }
-        public DbSet<Students> students { get; set; }
+        public DbSet<Classes> Classes { get; set; }
+        public DbSet<Countries> Countries { get; set; }
+        public DbSet<Students> Students { get; set; }
         #endregion
 
 
