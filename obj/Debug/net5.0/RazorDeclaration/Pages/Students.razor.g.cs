@@ -83,14 +83,21 @@ using mamun_SchoolApp.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Index.razor"
-using mamun_SchoolApp.Data;
+#line 2 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Students.razor"
+using mamun_SchoolApp.Data.EFCore;
 
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+#nullable restore
+#line 3 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Students.razor"
+using mamun_SchoolApp.Models;
+
+#line default
+#line hidden
+#nullable disable
+    [Microsoft.AspNetCore.Components.RouteAttribute("/Students")]
+    public partial class Students : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -98,51 +105,58 @@ using mamun_SchoolApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 44 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Index.razor"
+#line 7 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Students.razor"
       
-    Students Student = new Students();
-    List<Students> Students = new List<Students>();
 
-    protected override void OnInitialized()
-    {
-        LoadItems();
-    }
+    private List<Models.Students> students = new List<Models.Students>();
+    private Models.Students student = new Models.Students();
 
-    private void LoadItems()
+    protected override async Task OnInitializedAsync()
     {
-        Students = new List<Students>();
-        Students = studentsRepository.Gets();
-    }
+        students = await Task.Run(() => studentsRepository.GetAll());
 
-    private void GetItem(int id)
-    {
-        Student = studentsRepository.Get(id);
-    }
-
-    private void DeleteItem(int id)
-    {
-        string message = studentsRepository.Delete(id);
-    }
-
-    private void SaveItem()
-    {
-        if (Student.id == 0) Student = studentsRepository.Save(Student);
-        else Student = studentsRepository.Update(Student);
-        Student = new Students();
-        LoadItems();
     }
 
 
-    private void SetItemValue(Students student)
+    private async Task LoadItems()
     {
-        Student = student;
+        List<Models.Students> students = new List<Models.Students>();
+        students = await Task.Run(() => studentsRepository.GetAll());
     }
 
+    private async Task GetItem(int id)
+    {
+        //Models.Students student = new Models.Students();
+        student = await Task.Run(() => studentsRepository.Get(id));
+
+    }
+
+    private async Task DeleteItem(int id)
+    {
+        await Task.Run(() => studentsRepository.Delete(id));
+    }
+
+    //private async Task SaveItem()
+    //{
+    //    if (student.Id == 0)
+    //        student = studentsRepository.Add(Student);
+    //    else Student = studentsRepository.Update(Student);
+
+    //    Student = new Students();
+
+    //    LoadItems();
+    //}
+
+
+    //private void SetItemValue(Students student)
+    //{
+    //    Student = student;
+    //}
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private mamun_SchoolApp.IRepository.IStudentsRepository studentsRepository { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private mamun_SchoolApp.Data.EFCore.EfCoreStudentsRepository studentsRepository { get; set; }
     }
 }
 #pragma warning restore 1591

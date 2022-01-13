@@ -1,4 +1,3 @@
-using mamun_SchoolApp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -10,8 +9,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using mamun_SchoolApp.IRepository;
-using mamun_SchoolApp.Repository;using Microsoft.EntityFrameworkCore;
+using mamun_SchoolApp.Data;
+using Microsoft.EntityFrameworkCore;
+using mamun_SchoolApp.Data.EFCore;
+using mamun_SchoolApp.Models;
 
 namespace mamun_SchoolApp
 {
@@ -33,9 +34,9 @@ namespace mamun_SchoolApp
 
             services.AddDbContext<SchoolDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddScoped<IStudentsRepository, StudentsRepository>();
-            services.AddScoped<ICountriesRepository, CountriesRepository>();
-            services.AddScoped<IClassesRepository, ClassesRepository>();          
+            services.AddScoped<EfCoreStudentsRepository>();
+            services.AddScoped<EfCoreCountriesRepository>();
+            services.AddScoped<EfCoreClassesRepository>();          
 
 
 

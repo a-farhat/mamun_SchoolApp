@@ -1,14 +1,24 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using mamun_SchoolApp.Data;
 
-namespace mamun_SchoolApp.Data
+namespace mamun_SchoolApp.Models 
 {
-    public class Students
+    [Table("Students")]
+    public class Students : IEntity
     {
-       
-        public int id { get; set; }
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
         public int? class_id { get; set; }
         public int? country_id { get; set; }
         public string name { get; set; }
