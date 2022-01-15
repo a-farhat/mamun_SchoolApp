@@ -90,7 +90,7 @@ using mamun_SchoolApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Shared\NavMenu.razor"
+#line 33 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

@@ -6,8 +6,9 @@
 
 @code{
 
-    private List<Models.Students> students = new List<Models.Students>();
     private Models.Students student = new Models.Students();
+    private List<Models.Students> students = new List<Models.Students>();
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -32,24 +33,25 @@
     private async Task DeleteItem(int id)
     {
         await Task.Run(() => studentsRepository.Delete(id));
+        await LoadItems();
     }
 
-    //private async Task SaveItem()
-    //{
-    //    if (student.Id == 0)
-    //        student = studentsRepository.Add(Student);
-    //    else Student = studentsRepository.Update(Student);
+    private async Task SaveItem()
+    {
+        if (student.Id == 0)
+            student = await studentsRepository.Add(student);
+        else student = await studentsRepository.Update(student);
 
-    //    Student = new Students();
+        student = new Models.Students();
 
-    //    LoadItems();
-    //}
+        await LoadItems();
+    }
 
 
-    //private void SetItemValue(Students student)
-    //{
-    //    Student = student;
-    //}
+    private void SetItemValue(Models.Students student)
+    {
+        this.student = student;
+    }
 }
 
 
@@ -59,8 +61,17 @@
 <br />
 <br />
 <input type="text" @bind-value="@student.name" />
+<br />
+<br />
+<input type="text" @bind-value="@student.date_of_birth" />
+<br />
+<br />
+<input type="text" @bind-value="@student.class_id" />
+<br />
+<br />
+<input type="text" @bind-value="@student.country_id" />
 
-@*<button class="btn btn-success" @onclick="@(e=>SaveItem())">Save</button>*@
+<button class="btn btn-success" @onclick="@(e=>SaveItem())">Save</button>
 
 <table class="table table-striped table-bordered">
     <thead>
@@ -80,8 +91,8 @@
                 <td>@student.Id</td>
                 <td>@student.name</td>
                 <td>@student.date_of_birth</td>
-                <td>@student.Class</td>
-                <td>@student.Country</td>
+                <td>@student.class_id</td>
+                <td>@student.country_id</td>
 
                 <td>
                     <button class="btn btn-primary" @onclick="@(e=>GetItem(@student.Id))">Edit</button>

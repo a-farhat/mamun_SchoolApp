@@ -9,8 +9,8 @@ using mamun_SchoolApp.Data.EFCore;
 namespace mamun_SchoolApp.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
-    [Migration("20220112071453_new")]
-    partial class @new
+    [Migration("20220115074340_updated 3")]
+    partial class updated3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -18,13 +18,10 @@ namespace mamun_SchoolApp.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.12");
 
-            modelBuilder.Entity("mamun_SchoolApp.Data.Classes", b =>
+            modelBuilder.Entity("mamun_SchoolApp.Models.Classes", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("StudentsId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("class_name")
@@ -32,9 +29,7 @@ namespace mamun_SchoolApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StudentsId");
-
-                    b.ToTable("_Classes");
+                    b.ToTable("Classes");
 
                     b.HasData(
                         new
@@ -59,13 +54,10 @@ namespace mamun_SchoolApp.Migrations
                         });
                 });
 
-            modelBuilder.Entity("mamun_SchoolApp.Data.Countries", b =>
+            modelBuilder.Entity("mamun_SchoolApp.Models.Countries", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("StudentsId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("name")
@@ -73,9 +65,7 @@ namespace mamun_SchoolApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StudentsId");
-
-                    b.ToTable("_Countries");
+                    b.ToTable("Countries");
 
                     b.HasData(
                         new
@@ -112,12 +102,6 @@ namespace mamun_SchoolApp.Migrations
                     b.Property<int?>("CountryId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("class_id")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("country_id")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("date_of_birth")
                         .HasColumnType("TEXT");
 
@@ -136,59 +120,45 @@ namespace mamun_SchoolApp.Migrations
                         new
                         {
                             Id = 1,
-                            class_id = 1,
-                            country_id = 1,
+                            ClassId = 1,
+                            CountryId = 1,
                             date_of_birth = new DateTime(2012, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             name = "Peter Smith"
                         },
                         new
                         {
                             Id = 2,
-                            class_id = 2,
-                            country_id = 2,
+                            ClassId = 2,
+                            CountryId = 2,
                             date_of_birth = new DateTime(2010, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             name = "John Doe"
                         },
                         new
                         {
                             Id = 3,
-                            class_id = 3,
-                            country_id = 3,
+                            ClassId = 3,
+                            CountryId = 3,
                             date_of_birth = new DateTime(2009, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             name = "Danny Doe"
                         },
                         new
                         {
                             Id = 4,
-                            class_id = 4,
-                            country_id = 4,
+                            ClassId = 4,
+                            CountryId = 4,
                             date_of_birth = new DateTime(2008, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             name = "Clark Smith"
                         });
                 });
 
-            modelBuilder.Entity("mamun_SchoolApp.Data.Classes", b =>
-                {
-                    b.HasOne("mamun_SchoolApp.Models.Students", null)
-                        .WithMany("Classes")
-                        .HasForeignKey("StudentsId");
-                });
-
-            modelBuilder.Entity("mamun_SchoolApp.Data.Countries", b =>
-                {
-                    b.HasOne("mamun_SchoolApp.Models.Students", null)
-                        .WithMany("Countries")
-                        .HasForeignKey("StudentsId");
-                });
-
             modelBuilder.Entity("mamun_SchoolApp.Models.Students", b =>
                 {
-                    b.HasOne("mamun_SchoolApp.Data.Classes", "Class")
-                        .WithMany()
+                    b.HasOne("mamun_SchoolApp.Models.Classes", "Class")
+                        .WithMany("Students")
                         .HasForeignKey("ClassId");
 
-                    b.HasOne("mamun_SchoolApp.Data.Countries", "Country")
-                        .WithMany()
+                    b.HasOne("mamun_SchoolApp.Models.Countries", "Country")
+                        .WithMany("Students")
                         .HasForeignKey("CountryId");
 
                     b.Navigation("Class");
@@ -196,11 +166,14 @@ namespace mamun_SchoolApp.Migrations
                     b.Navigation("Country");
                 });
 
-            modelBuilder.Entity("mamun_SchoolApp.Models.Students", b =>
+            modelBuilder.Entity("mamun_SchoolApp.Models.Classes", b =>
                 {
-                    b.Navigation("Classes");
+                    b.Navigation("Students");
+                });
 
-                    b.Navigation("Countries");
+            modelBuilder.Entity("mamun_SchoolApp.Models.Countries", b =>
+                {
+                    b.Navigation("Students");
                 });
 #pragma warning restore 612, 618
         }

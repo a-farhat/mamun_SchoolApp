@@ -108,8 +108,9 @@ using mamun_SchoolApp.Models;
 #line 7 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Students.razor"
       
 
-    private List<Models.Students> students = new List<Models.Students>();
     private Models.Students student = new Models.Students();
+    private List<Models.Students> students = new List<Models.Students>();
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -134,24 +135,25 @@ using mamun_SchoolApp.Models;
     private async Task DeleteItem(int id)
     {
         await Task.Run(() => studentsRepository.Delete(id));
+        await LoadItems();
     }
 
-    //private async Task SaveItem()
-    //{
-    //    if (student.Id == 0)
-    //        student = studentsRepository.Add(Student);
-    //    else Student = studentsRepository.Update(Student);
+    private async Task SaveItem()
+    {
+        if (student.Id == 0)
+            student = await studentsRepository.Add(student);
+        else student = await studentsRepository.Update(student);
 
-    //    Student = new Students();
+        student = new Models.Students();
 
-    //    LoadItems();
-    //}
+        await LoadItems();
+    }
 
 
-    //private void SetItemValue(Students student)
-    //{
-    //    Student = student;
-    //}
+    private void SetItemValue(Models.Students student)
+    {
+        this.student = student;
+    }
 
 #line default
 #line hidden
