@@ -1,0 +1,77 @@
+﻿@page "/Stats"
+@using  mamun_SchoolApp.Data.EFCore
+@using  mamun_SchoolApp.Models
+@inject mamun_SchoolApp.Data.EFCore.EfCoreStudentsRepository studentsRepository
+
+
+
+@code{
+
+    //private Models.Students student = new Models.Students();
+    //private Models.Classes cl4ss = new Models.Classes();
+    //private List<Models.Classes> classes = new List<Models.Classes>();
+    private List<Models.Students> students = new List<Models.Students>();
+
+    private string statResult;
+
+
+    //protected override async Task OnInitializedAsync()
+    //{
+    //    //classes = await Task.Run(() => classesRepository.GetAll());
+    //    //students = await Task.Run(() => studentsRepository.GetAll());
+    //}
+
+    private async Task StudentsCountPerClass()
+    {
+        //List<Models.Students> students = new List<Models.Students>();
+        students = await Task.Run(() => studentsRepository.GetAll());
+
+        string result = String.Empty;
+        var studentByClass = from s in students
+                             group s by s.ClassId;
+
+        foreach (var grp in studentByClass)
+        {
+            result += "<tr>" + grp.Key + "</tr>"; //Each group has a key 
+
+            foreach (Models.Students s in grp) // Each group has inner collection
+                result += "<td>" + s.name + "</td>";
+        }
+
+        result += "<tbody>" + result + "</tbody>";
+
+        statResult = result;
+    }
+
+    private async Task StudentsCountPerCountry()
+    {
+
+    }
+
+    private async Task AverageAgeOfStudents()
+    {
+
+    }
+
+}
+
+
+<h1>mamun school app</h1>
+
+<label>Statistics</label>
+<label>Count of students per class</label>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Student Count</th>
+            <th>Class Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @StudentsCountPerClass();
+        statResult;
+    </tbody>
+</table>
+
+
+

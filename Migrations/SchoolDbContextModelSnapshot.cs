@@ -49,6 +49,16 @@ namespace mamun_SchoolApp.Migrations
                         {
                             Id = 4,
                             class_name = "Grade2"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            class_name = "Grade3"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            class_name = "Grade4"
                         });
                 });
 
@@ -143,9 +153,129 @@ namespace mamun_SchoolApp.Migrations
                         {
                             Id = 4,
                             ClassId = 4,
-                            CountryId = 4,
+                            CountryId = 1,
                             date_of_birth = new DateTime(2008, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            name = "Clark Smith"
+                            name = "Clark Boy1"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            ClassId = 4,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2012, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith2"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            ClassId = 4,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2012, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith3"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            ClassId = 4,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2012, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith4"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            ClassId = 4,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2012, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith5"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            ClassId = 4,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2012, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith6"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            ClassId = 4,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2012, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith7"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            ClassId = 6,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2014, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith8"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            ClassId = 6,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2014, 7, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith9"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            ClassId = 6,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2014, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith10"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            ClassId = 6,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2014, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith11"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            ClassId = 6,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2014, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith12"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            ClassId = 6,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2014, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith13"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            ClassId = 6,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2014, 12, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith14"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            ClassId = 6,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2014, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith15"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            ClassId = 6,
+                            CountryId = 1,
+                            date_of_birth = new DateTime(2014, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            name = "Clark Smith16"
                         });
                 });
 

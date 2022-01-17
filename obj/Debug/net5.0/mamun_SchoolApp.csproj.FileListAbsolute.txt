@@ -82,3 +82,5 @@ C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\obj\Debug\net5.0\RazorDecl
 C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\obj\Debug\net5.0\Razor\Pages\Students.razor.g.cs
 C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
 C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
+C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\obj\Debug\net5.0\RazorDeclaration\Pages\Stats.razor.g.cs
+C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\obj\Debug\net5.0\Razor\Pages\Stats.razor.g.cs

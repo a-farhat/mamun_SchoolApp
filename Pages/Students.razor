@@ -10,6 +10,8 @@
     private List<Models.Students> students = new List<Models.Students>();
 
 
+
+
     protected override async Task OnInitializedAsync()
     {
         students = await Task.Run(() => studentsRepository.GetAll());
@@ -52,10 +54,35 @@
     {
         this.student = student;
     }
+
+    //private async Task StudentsCountPerClass()
+    //{
+    //    List<Models.Students> students = new List<Models.Students>();
+    //    students = await Task.Run(() => studentsRepository.GetAll());
+
+    //    string result = String.Empty;
+    //    var studentByClass = from s in students
+    //                         group s by s.ClassId;
+
+    //    foreach (var grp in studentByClass)
+    //    {
+    //        result += "<tr>"  +grp.Key+ "</tr>"; //Each group has a key 
+
+    //        foreach (Models.Students s in grp) // Each group has inner collection
+    //            result += "<td>"  +s.name+  "</td>";
+    //    }
+
+    //    result += "<tbody>" + result + "</tbody>";
+
+
+    //}
+
+}
 }
 
 
 <h1>mamun school app</h1>
+
 
 <input type="text" @bind-value="@student.Id" />
 <br />
@@ -66,10 +93,10 @@
 <input type="text" @bind-value="@student.date_of_birth" />
 <br />
 <br />
-<input type="text" @bind-value="@student.class_id" />
+<input type="text" @bind-value="@student.ClassId" />
 <br />
 <br />
-<input type="text" @bind-value="@student.country_id" />
+<input type="text" @bind-value="@student.CountryId" />
 
 <button class="btn btn-success" @onclick="@(e=>SaveItem())">Save</button>
 
@@ -91,8 +118,8 @@
                 <td>@student.Id</td>
                 <td>@student.name</td>
                 <td>@student.date_of_birth</td>
-                <td>@student.class_id</td>
-                <td>@student.country_id</td>
+                <td>@student.ClassId</td>
+                <td>@student.CountryId</td>
 
                 <td>
                     <button class="btn btn-primary" @onclick="@(e=>GetItem(@student.Id))">Edit</button>
@@ -100,6 +127,7 @@
                 </td>
             </tr>
         }
+       
     </tbody>
 </table>
 

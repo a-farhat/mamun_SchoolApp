@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace mamun_SchoolApp.Migrations
 {
-    public partial class updated3 : Migration
+    public partial class updated5 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -82,6 +82,16 @@ namespace mamun_SchoolApp.Migrations
                 values: new object[] { 4, "Grade2" });
 
             migrationBuilder.InsertData(
+                table: "Classes",
+                columns: new[] { "Id", "class_name" },
+                values: new object[] { 5, "Grade3" });
+
+            migrationBuilder.InsertData(
+                table: "Classes",
+                columns: new[] { "Id", "class_name" },
+                values: new object[] { 6, "Grade4" });
+
+            migrationBuilder.InsertData(
                 table: "Countries",
                 columns: new[] { "Id", "name" },
                 values: new object[] { 1, "United States" });
@@ -109,17 +119,92 @@ namespace mamun_SchoolApp.Migrations
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 20, 6, 1, new DateTime(2014, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith16" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 19, 6, 1, new DateTime(2014, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith15" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 18, 6, 1, new DateTime(2014, 12, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith14" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 17, 6, 1, new DateTime(2014, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith13" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 16, 6, 1, new DateTime(2014, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith12" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 15, 6, 1, new DateTime(2014, 9, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith11" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 14, 6, 1, new DateTime(2014, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith10" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
                 values: new object[] { 2, 2, 2, new DateTime(2010, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "John Doe" });
 
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
-                values: new object[] { 3, 3, 3, new DateTime(2009, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Danny Doe" });
+                values: new object[] { 12, 6, 1, new DateTime(2014, 7, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith9" });
 
             migrationBuilder.InsertData(
                 table: "Students",
                 columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
-                values: new object[] { 4, 4, 4, new DateTime(2008, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith" });
+                values: new object[] { 10, 4, 1, new DateTime(2012, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith7" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 9, 4, 1, new DateTime(2012, 5, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith6" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 8, 4, 1, new DateTime(2012, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith5" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 7, 4, 1, new DateTime(2012, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith4" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 6, 4, 1, new DateTime(2012, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith3" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 5, 4, 1, new DateTime(2012, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith2" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 4, 4, 1, new DateTime(2008, 8, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Boy1" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 11, 6, 1, new DateTime(2014, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), "Clark Smith8" });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "ClassId", "CountryId", "date_of_birth", "name" },
+                values: new object[] { 3, 3, 3, new DateTime(2009, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified), "Danny Doe" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Students_ClassId",

@@ -83,21 +83,21 @@ using mamun_SchoolApp.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Students.razor"
+#line 2 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Students - Copy.razor"
 using mamun_SchoolApp.Data.EFCore;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Students.razor"
+#line 3 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Students - Copy.razor"
 using mamun_SchoolApp.Models;
 
 #line default
 #line hidden
 #nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/Students")]
-    public partial class Students : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class Students___Copy : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,18 +105,31 @@ using mamun_SchoolApp.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 7 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Students.razor"
+#line 7 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Students - Copy.razor"
       
 
     private Models.Students student = new Models.Students();
     private List<Models.Students> students = new List<Models.Students>();
 
 
-
-
     protected override async Task OnInitializedAsync()
     {
         students = await Task.Run(() => studentsRepository.GetAll());
+
+    }
+
+    //private int  StudentsCountPerClass()
+    //{
+    //    return  studentsRepository.StudentsCountPerClass();
+    //}
+
+    private async Task StudentsCountPerCountry()
+    {
+
+    }
+
+    private async Task AverageAgeOfStudents()
+    {
 
     }
 
@@ -156,29 +169,6 @@ using mamun_SchoolApp.Models;
     {
         this.student = student;
     }
-
-    //private async Task StudentsCountPerClass()
-    //{
-    //    List<Models.Students> students = new List<Models.Students>();
-    //    students = await Task.Run(() => studentsRepository.GetAll());
-
-    //    string result = String.Empty;
-    //    var studentByClass = from s in students
-    //                         group s by s.ClassId;
-
-    //    foreach (var grp in studentByClass)
-    //    {
-    //        result += "<tr>"  +grp.Key+ "</tr>"; //Each group has a key 
-
-    //        foreach (Models.Students s in grp) // Each group has inner collection
-    //            result += "<td>"  +s.name+  "</td>";
-    //    }
-
-    //    result += "<tbody>" + result + "</tbody>";
-
-
-    //}
-
 
 #line default
 #line hidden
