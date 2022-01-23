@@ -1,3 +1,5 @@
+Solution Reference to the project: https://github.com/rihal-om/rihal-challenges/blob/main/dotnet/README.md#job-requirement-full-stack-dotnet-developer 
+
 # Job Requirement (Full-Stack DotNet Developer)
 We are looking for software engineers and developers that are resourceful, adaptable, curious, tech savvy, and eager to learn and face challenges to work on the development of in-house applications and directly working on client projects.
 
