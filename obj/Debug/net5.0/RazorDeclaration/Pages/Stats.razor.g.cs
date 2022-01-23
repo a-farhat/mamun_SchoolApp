@@ -7,7 +7,6 @@
 namespace mamun_SchoolApp.Pages
 {
     #line hidden
-    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -96,6 +95,20 @@ using mamun_SchoolApp.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 7 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Stats.razor"
+using System;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Stats.razor"
+using System.Text;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/Stats")]
     public partial class Stats : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -105,59 +118,131 @@ using mamun_SchoolApp.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 8 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Stats.razor"
+#line 13 "C:\Users\AhmadFarhat\Documents\GitHub\mamun_SchoolApp\Pages\Stats.razor"
       
 
-    //private Models.Students student = new Models.Students();
-    //private Models.Classes cl4ss = new Models.Classes();
-    //private List<Models.Classes> classes = new List<Models.Classes>();
+        //private Models.Students student = new Models.Students();
+        //private Models.Classes cl4ss = new Models.Classes();
+    private List<Models.Classes> classes = new List<Models.Classes>();
     private List<Models.Students> students = new List<Models.Students>();
+    private List<Models.Countries> countries = new List<Models.Countries>();
 
     private string statResult;
 
 
-    //protected override async Task OnInitializedAsync()
-    //{
-    //    //classes = await Task.Run(() => classesRepository.GetAll());
-    //    //students = await Task.Run(() => studentsRepository.GetAll());
-    //}
-
-    private async Task StudentsCountPerClass()
+    protected override async Task OnInitializedAsync()
     {
-        //List<Models.Students> students = new List<Models.Students>();
+        classes = await Task.Run(() => classesRepository.GetAll());
         students = await Task.Run(() => studentsRepository.GetAll());
+        countries = await Task.Run(() => countriesRepository.GetAll());
+    }
 
-        string result = String.Empty;
-        var studentByClass = from s in students
-                             group s by s.ClassId;
+    private string StudentsCountPerClass()
+    {
+        String result = String.Empty;
+        //var studentByClass =
+        //    from s in students
+        //    group s by s.ClassId into sGroup
+        //    select new
+        //    {
+        //        Class = sGroup.Key,
+        //        Count = sGroup.Count(),
+        //    };
+
+
+        //var joinStudentClass = students.Join(// outer sequence
+        //              classes,  // inner sequence
+        //              student => student.ClassId,    // outerKeySelector
+        //              classes => classes.Id,  // innerKeySelector
+        //              (students, classes) => new  // result selector
+        //              {
+        //                  StudentName = students.name,
+        //                  ClassName = classes.class_name
+        //              });
+
+
+        var studentByClass = from c in classes
+                             join s in students on c equals s.Class into studentsInClass
+                             select new
+                             {
+                                 ClassName = c.class_name,
+                                 StudentCount = studentsInClass.Count()
+
+                             };
 
         foreach (var grp in studentByClass)
         {
-            result += "<tr>" + grp.Key + "</tr>"; //Each group has a key 
-
-            foreach (Models.Students s in grp) // Each group has inner collection
-                result += "<td>" + s.name + "</td>";
+            result += "<tr>";
+            result += "<td>" + grp.ClassName + "</td>";
+            result += "<td>" + grp.StudentCount + "</td>";
+            result += "</tr>";
         }
-
-        result += "<tbody>" + result + "</tbody>";
-
-        statResult = result;
+        return result;
     }
 
-    private async Task StudentsCountPerCountry()
+    private string StudentsCountPerCountry()
     {
+        StringBuilder result2 = new StringBuilder();
+        var studentByCountry = from c in countries
+                               join s in students on c equals s.Country into studentsInCountry
+                               select new
+                               {
+                                   CountryName = c.name,
+                                   StudentCount = studentsInCountry.Count()
+
+                               };
+
+        foreach (var grp in studentByCountry)
+        {
+            result2.Append("<tr>");
+            result2.Append("<td>" + grp.CountryName + "</td>");
+            result2.Append("<td>" + grp.StudentCount + "</td>");
+            result2.Append("</tr>");
+        }
+        return result2.ToString();
 
     }
 
-    private async Task AverageAgeOfStudents()
+    private string AverageAgeOfStudents()
     {
+        double avgAge = students
+            .Average(x => (DateTime.Now - x.date_of_birth).TotalDays) / 365;
+        return avgAge.ToString();
+    }
 
+    private string StudentsDOB()
+    {
+        StringBuilder result3 = new StringBuilder();
+        var studentAges = students
+        .Select(x => (DateTime.Now - x.date_of_birth).TotalDays);
+
+        //foreach (var grp in studentAges)
+        //{
+        //    result2.Append("<tr>");
+        //    result2.Append("<td>" + Double.Parse(grp.ToString())/365 + "</td>");
+
+        //    result2.Append("</tr>");
+        //}
+        double totalYrs = 0.0;
+        foreach (var grp in studentAges)
+        {
+            totalYrs += Double.Parse(grp.ToString())/365;
+
+        }
+        result3.Append("<tr>");
+        result3.Append("<td>" + totalYrs / studentAges.Count() + "</td>");
+
+        result3.Append("</tr>");
+
+        return result3.ToString();
     }
 
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private mamun_SchoolApp.Data.EFCore.EfCoreCountriesRepository countriesRepository { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private mamun_SchoolApp.Data.EFCore.EfCoreClassesRepository classesRepository { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private mamun_SchoolApp.Data.EFCore.EfCoreStudentsRepository studentsRepository { get; set; }
     }
 }
